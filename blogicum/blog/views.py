@@ -31,7 +31,7 @@ posts = [
                 гиблого места.''',
     },
     {
-        'id': 2, 
+        'id': 2,
         'location': 'Остров отчаянья',
         'date': '25 октября 1659 года',
         'category': 'not-my-day',
@@ -43,7 +43,8 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ]
- 
+
+
 def index(request):
     reversed_posts = list(reversed(posts))
     context = {
@@ -51,16 +52,17 @@ def index(request):
     }
     return render(request, 'blog/index.html', context)
 
+
 def post_detail(request, id):
     post = None
     for p in posts:
         if p['id'] == id:
             post = p
             break
-    
+
     if post is None:
         return HttpResponse(f"Пост с id {id} не найден", status=404)
-    
+
     context = {
         'post': post,
     }
